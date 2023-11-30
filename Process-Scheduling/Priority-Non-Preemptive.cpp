@@ -15,8 +15,8 @@ struct process{
     bool completed;
 
 
-    // process(int _id, int _priority, int _arrival, int _burst) : id(_id), priority(_priority), arrival(_arrival),
-    // burst(_burst), waiting(0), turnaround(0), response(-1), completed(false) {}
+    process(int _id, int _priority, int _arrival, int _burst) : id(_id), priority(_priority), arrival(_arrival),
+    burst(_burst), waiting(0), turnaround(0), response(-1), completed(false) {}
 };
 
 void priority_np(vector<process> &processes){
@@ -63,29 +63,16 @@ int main(){
     cout << "Number of processes: ";
     cin >> n;
 
-    vector<process> processes(n);
-    //processes.reserve(n);
+    vector<process> processes;
+    processes.reserve(n);
 
     int arr, burst, priority;
     for(int i = 0; i < n; i++){
         cout << "Enter arrival ,burst and priority for process " << i << " : ";
         cin >> arr >> burst >>  priority;
         processes.emplace_back(i,priority,arr,burst);
-
-        std::cout << "Enter process " << i << " arrival time: ";
-        cin >> arr;
-        std::cout << "Enter process " << i << " burst time: ";
-        cin >> burst;
-        std::cout << "Enter process " << i << " priority: ";
-        cin >> priority;
-        //processes.emplace_back(i,arr,burst);
-        processes[i].arrival = arr;
-        processes[i].burst = burst;
-        processes[i].priority = priority;
-        processes[i].id = i;
-        processes[i].completed = false;
-        processes[i].response = -1;
     }
 
     priority_np(processes);
 }
+
