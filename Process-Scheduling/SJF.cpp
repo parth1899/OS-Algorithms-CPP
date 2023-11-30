@@ -40,7 +40,7 @@ int sjf(vector<process> &processes){
         //currenttime++;
         //std::cout << "hiloop" << endl;
 
-        if (currentproc == NULL)
+        if (currentproc == NULL) //stalling
         {
             currenttime++;
         }
